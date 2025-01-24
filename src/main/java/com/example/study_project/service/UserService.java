@@ -3,6 +3,7 @@ package com.example.study_project.service;
 import com.example.study_project.dto.SignupRequestDto;
 import com.example.study_project.entity.User;
 import com.example.study_project.entity.UserRoleEnum;
+import com.example.study_project.jwt.JwtUtil;
 import com.example.study_project.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,8 +15,9 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserService {
 
-    private UserRepository userRepository;
-    private PasswordEncoder passwordEncoder;
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+
 
     // ADMIN_TOKEN
     private final String ADMIN_TOKEN = "AAABnvxRVklrnYxKZ0aHgTBcXukeZygoC";
