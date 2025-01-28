@@ -1,6 +1,7 @@
 package com.example.study_project.service;
 
 import com.example.study_project.dto.SignupRequestDto;
+import com.example.study_project.dto.UserDto;
 import com.example.study_project.entity.User;
 import com.example.study_project.entity.UserRoleEnum;
 import com.example.study_project.jwt.JwtUtil;
@@ -9,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -49,4 +52,16 @@ public class UserService {
         userRepository.save(user);
     }
 
+    public List<UserDto> searchName(String username) {
+        List<User> userList = userRepository.findByUsernameContain(username);
+
+        List<UserDto> userDtoList = new ArrayList<>();
+
+        for (User user : userList) {
+            userDtoList.add(new UserDto(user));
+        }
+
+        return userDtoList;
+
+    }
 }
