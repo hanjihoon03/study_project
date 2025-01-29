@@ -18,4 +18,6 @@ public interface UserRepositoryQuery {
     List<User> userHasOrder();
 
     List<User> orderCountSort();
+
+
 }
